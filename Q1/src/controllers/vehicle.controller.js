@@ -11,6 +11,12 @@ export const createVehicle = async(req,res) => {
     if(!owner || owner.role !== "owner"){
         return res.status(403).json({message:"Only owners can create vehicles"})
     }
+    const {data, error} = await supabase
+    .from("vehicles")
+    .insert([{name, registration_number, allowed_passengers, rate_per_km, owner_id}])
+    .select();
+    if(error)
+        return res.status(400).json({error:error.message});
     res.json(data[0]);
 }
 
