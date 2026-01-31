@@ -1,5 +1,5 @@
 import express from "express";
-import { dotenv } from 'dotenv';
+import dotenv from 'dotenv';
 import { logger } from './src/middlewares/logger.js';
 import { notFound } from './src/middlewares/notFound.js';
 import userrRoutes from "./src/routes/userrs.routes.js";
